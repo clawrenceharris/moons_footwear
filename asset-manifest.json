@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/moons_footwear/static/css/main.c02d6ed8.css",
+    "main.js": "/moons_footwear/static/js/main.6af831d5.js",
+    "static/media/seasonal2.jpeg": "/moons_footwear/static/media/seasonal2.0d7647a44ad0cb1d0ccc.jpeg",
+    "static/media/seasonal3.jpeg": "/moons_footwear/static/media/seasonal3.fe172b5942fd77efbcfb.jpeg",
+    "static/media/texture1.png": "/moons_footwear/static/media/texture1.df472af3bec8f14e0741.png",
+    "static/media/about.png": "/moons_footwear/static/media/about.66cb67f2dcb2d13aa82a.png",
+    "static/media/seasonal1.png": "/moons_footwear/static/media/seasonal1.7fac80a1360153cecca6.png",
+    "static/media/seasonal4.png": "/moons_footwear/static/media/seasonal4.e88ae96415011be38279.png",
+    "static/media/shoe3.webp": "/moons_footwear/static/media/shoe3.c2dd98563e2278d9d1c1.webp",
+    "static/media/shoe5.webp": "/moons_footwear/static/media/shoe5.21ef174b183afbefe00d.webp",
+    "static/media/shoe2.webp": "/moons_footwear/static/media/shoe2.a6ff7ac818d6782805c2.webp",
+    "static/media/shoe4.webp": "/moons_footwear/static/media/shoe4.d570e4f41bdcfdbf6d51.webp",
+    "static/media/male-shoes.jpeg": "/moons_footwear/static/media/male-shoes.f63e11aae6abbf8be314.jpeg",
+    "static/media/moon-walker3.jpeg": "/moons_footwear/static/media/moon-walker3.5446bca79e02d8ea5b62.jpeg",
+    "static/media/shoe6.webp": "/moons_footwear/static/media/shoe6.cd1f7bf86fae9f9ded91.webp",
+    "static/media/moon-walker.jpeg": "/moons_footwear/static/media/moon-walker.07a07432b56168b77f4c.jpeg",
+    "static/media/DunbarTall-Regular.woff": "/moons_footwear/static/media/DunbarTall-Regular.1acb6262626e78f49490.woff",
+    "static/media/DunbarText-Bold.woff": "/moons_footwear/static/media/DunbarText-Bold.a4264c03536984afac9e.woff",
+    "static/media/Fredoka-VariableFont_wdth_wght.woff": "/moons_footwear/static/media/Fredoka-VariableFont_wdth_wght.d1e52fd5489dae8bdf63.woff",
+    "static/media/DunbarTall-Regular.woff2": "/moons_footwear/static/media/DunbarTall-Regular.9b203ac0da4ae68eb3f1.woff2",
+    "static/media/DunbarText-Bold.woff2": "/moons_footwear/static/media/DunbarText-Bold.611f401e741da6119570.woff2",
+    "static/media/moon-walker2.jpg": "/moons_footwear/static/media/moon-walker2.4fa19e8ebbbeedb71844.jpg",
+    "static/media/fugazone-regular-webfont.woff": "/moons_footwear/static/media/fugazone-regular-webfont.46b920c174bf55561ee7.woff",
+    "static/media/female-shoes.jpeg": "/moons_footwear/static/media/female-shoes.e74a3cca544395976dd9.jpeg",
+    "static/media/foot-measuring.png": "/moons_footwear/static/media/foot-measuring.d740fbdbdf0e42255c8d.png",
+    "static/media/fugazone-regular-webfont.woff2": "/moons_footwear/static/media/fugazone-regular-webfont.840b6fd296d536cb6cce.woff2",
+    "index.html": "/moons_footwear/index.html",
+    "main.c02d6ed8.css.map": "/moons_footwear/static/css/main.c02d6ed8.css.map",
+    "main.6af831d5.js.map": "/moons_footwear/static/js/main.6af831d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c02d6ed8.css",
+    "static/js/main.6af831d5.js"
+  ]
+}
