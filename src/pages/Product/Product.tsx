@@ -3,20 +3,34 @@ import { ProductItem } from "../../components";
 import "./Product.css";
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
-import { useProduct } from "../../hooks";
+import { useProduct, useReviews } from "../../hooks";
 
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const productId = Number(id);
-  const { isLoading, product, error } = useProduct(productId);
+  const {
+    isLoading: loadingProduct,
+    product,
+    error: productError,
+  } = useProduct(productId);
+  const {
+    isLoading: loadingReviews,
+    reviews,
+    error: reviewsError,
+  } = useReviews(productId);
 
-  if (isLoading) {
-    return <div className="content-centered">Loading...</div>;
+  if (loadingProduct || loadingReviews) {
+    return <div className="content-centered-absolute">Loading...</div>;
   }
-
-  if (error) {
+  if (!product) {
+    return <NotFound message="Product not found" />;
+  }
+  if (productError || reviewsError) {
     return (
-      <NotFound message="The product you looking for could not be found" />
+      <div className="content-centered-absolute">
+        <h1>Something went wrong.</h1>
+        <p>{productError || reviewsError}</p>
+      </div>
     );
   }
 
@@ -28,13 +42,13 @@ const Product: React.FC = () => {
       <section id="reviews">
         <h2>Reviews</h2>
         <dl style={{ marginTop: "20px" }}>
-          {/* {product.reviews.length > 0 ? (
-            product.reviews.map((item: User, index: number) => (
+          {reviews.length > 0 ? (
+            reviews.map((item, index: number) => (
               <div key={index} style={{ marginBottom: "40px" }}>
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <dt>{item.user.firstName + " " + item.user.lastName} </dt>
+                  <dt>{item.user.first_name + " " + item.user.last_name} </dt>
 
                   <div className="stars">
                     {Array(item.stars)
@@ -49,10 +63,10 @@ const Product: React.FC = () => {
               </div>
             ))
           ) : (
-            <p color={{ color: "gray" }}>
+            <p>
               No reviews yet. Be the first to say something about this product!
             </p>
-          )} */}
+          )}
         </dl>
       </section>
       <section>

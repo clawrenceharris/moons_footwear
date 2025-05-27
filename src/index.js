@@ -1,17 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { NavProvider, ShopProvider } from "./context";
+import { AuthProvider, NavProvider, ShopProvider } from "./context";
 import { HashRouter as BrowserRouter } from "react-router-dom";
+import { ErrorBoundary } from "./components";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavProvider>
-        <ShopProvider>
-          <App />
-        </ShopProvider>
-      </NavProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <NavProvider>
+            <ShopProvider>
+              <App />
+            </ShopProvider>
+          </NavProvider>
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -3,7 +3,6 @@ import {
   useContext,
   useState,
   ReactNode,
-  FC,
   useEffect,
 } from "react";
 import {
@@ -11,7 +10,7 @@ import {
   ProductBrand,
   ProductCategory,
   ProductFlag,
-} from "../../../types";
+} from "../types/product";
 import { fetchAllProducts } from "../api/shop";
 import {
   fetchAllBrands,
@@ -40,7 +39,7 @@ const useShop = () => {
   return context;
 };
 
-const ShopProvider: FC<{ children: ReactNode }> = ({ children }) => {
+const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<ProductCategory[]>([]);
   const [subcategories, setSubategories] = useState<ProductCategory[]>([]);

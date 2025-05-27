@@ -3,6 +3,7 @@ header {
   justify-content: space-between;
   align-items: center;
   top: 0;
+  padding: 10px;
   position: absolute;
   display: flex;
   align-items: center;
@@ -14,10 +15,13 @@ header {
 }
 
 .logo {
-  margin: 0;
+  margin: 0 -10px;
 }
+
 .header-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 0 10px;
 }
 
@@ -56,8 +60,9 @@ header {
 .sticky-header .menu-btn {
   display: block;
 }
-.header-left,
-.header-right {
+
+.header-top,
+.header-bottom {
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -109,10 +114,6 @@ header img {
     margin: 0 10px;
   }
 
-  header .menu-btn {
-    display: none;
-  }
-
   header {
     flex-direction: column;
     gap: 20px;
@@ -120,10 +121,6 @@ header img {
   .header-container .close-btn {
     display: none;
   }
-  .header-container {
-    display: flex;
-  }
-
   .header-right,
   .header-left {
     margin: 0;

@@ -6,7 +6,7 @@ import {
   deleteProduct,
   fetchProducts,
 } from "../../../api/admin/products";
-import { Product } from "../../../types";
+import { Product } from "../../../types/product";
 
 const AdminPanel = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,7 +39,7 @@ const AdminPanel = () => {
     navigate(`/admin/product/${id}`);
   }
   if (error) {
-    <div className="content-centered">
+    <div className="content-centered-absolute">
       <p>{error}</p>
     </div>;
   }
@@ -56,7 +56,7 @@ const AdminPanel = () => {
             <ProductGridItem product={item} />
             <div className="flex-content">
               <button
-                className="button-outlined"
+                className="button-secondary"
                 onClick={() => handleEditClick(item.id)}
               >
                 Edit Product

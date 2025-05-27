@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Product } from "../types";
+import { Product } from "../types/product";
 import { fetchProduct } from "../api/admin/products";
 
 const useProduct = (id?: number) => {
@@ -19,7 +19,9 @@ const useProduct = (id?: number) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setError(err.message);
+        setError(
+          err instanceof Error ? err.message : "An unknown error occurred"
+        );
         setIsLoading(false);
       });
   }, [id]);

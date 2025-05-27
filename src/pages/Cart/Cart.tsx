@@ -13,7 +13,7 @@ const Cart = () => {
           ))}
         </div>
       ) : (
-        <div className="content-centered">
+        <div className="content-centered-absolute">
           <h2>Nothing is in your cart yet.</h2>
         </div>
       )}

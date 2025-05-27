@@ -155,7 +155,7 @@ const EditProduct = () => {
   }
   if (error) {
     return (
-      <div className="content-centered">
+      <div className="content-centered-absolute">
         <h1>Uh oh, an error occured.</h1>
         {error && <p>{error}</p>}
       </div>
@@ -163,7 +163,7 @@ const EditProduct = () => {
   }
   if (!product) {
     return (
-      <div className="content-centered">
+      <div className="content-centered-absolute">
         <h1>Uh oh, we coudn't find this product.</h1>
 
         {error && <p>{error}</p>}
@@ -475,7 +475,7 @@ const EditProduct = () => {
               <button
                 type="button"
                 onClick={handleResetImages}
-                className="button-outlined"
+                className="button-secondary"
               >
                 Reset
               </button>

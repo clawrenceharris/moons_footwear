@@ -1,3 +1,17 @@
+.product-grid-item {
+  margin: 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 390px;
+  cursor: pointer;
+  max-width: 400px;
+  min-width: 250px;
+  border: 1px solid #00000020;
+  color: black;
+  transition: 0.2s ease-in-out;
+}
+
 .product-grid-item img {
   max-width: 200px;
   height: auto;
@@ -22,19 +36,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.product-grid-item {
-  margin: 20px 0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 390px;
-  max-width: 400px;
-  min-width: 250px;
-  border: 1px solid #00000020;
-  color: black;
-  transition: 0.2s ease-in-out;
 }
 
 .product-grid-item .product-bottom {

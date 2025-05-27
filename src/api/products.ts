@@ -1,11 +1,4 @@
-import {
-  Product,
-  ProductBrand,
-  ProductCategory,
-  ProductFlag,
-  ProductImage,
-  ProductVariants,
-} from "../../../types";
+import { Product } from "../types/product";
 import api from "./axios";
 
 export const fetchProductById = async (id: number): Promise<Product> => {

@@ -101,7 +101,7 @@ const Home: React.FC = () => {
                 Enter your email
               </label>
 
-              <button className="button-outlined">Join Mailinglist</button>
+              <button className="button-secondary">Join Mailinglist</button>
             </form>
           </div>
         </section>

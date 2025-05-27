@@ -3,7 +3,6 @@ import {
   useContext,
   useState,
   ReactNode,
-  FC,
   useEffect,
 } from "react";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +25,7 @@ const useNav = () => {
   return context;
 };
 
-const NavProvider: FC<{ children: ReactNode }> = ({ children }) => {
+const NavProvider = ({ children }: { children: ReactNode }) => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [activeLink, setActiveLink] = useState<string>("home");
   const navigate = useNavigate();

@@ -250,7 +250,7 @@ const Checkout: React.FC = () => {
           {completedSections.includes("contact-info") && (
             <button
               onClick={() => setCurrentSection(null)}
-              className="button-outlined"
+              className="button-secondary"
             >
               Cancel
             </button>
@@ -285,7 +285,7 @@ const Checkout: React.FC = () => {
                   href="#contact-info"
                   onClick={() => setCurrentSection("contact-info")}
                   style={{ width: "100%" }}
-                  className="button-outlined"
+                  className="button-secondary"
                 >
                   Edit
                 </a>
@@ -342,7 +342,7 @@ const Checkout: React.FC = () => {
                     {completedSections.includes("shipping-info") && (
                       <button
                         onClick={() => setCurrentSection(null)}
-                        className="button-outlined"
+                        className="button-secondary"
                       >
                         Cancel
                       </button>
@@ -364,7 +364,7 @@ const Checkout: React.FC = () => {
                   href="#contact-info"
                   onClick={() => setCurrentSection("shipping-info")}
                   style={{ width: "100%" }}
-                  className="button-outlined"
+                  className="button-secondary"
                 >
                   Edit
                 </a>
@@ -433,7 +433,7 @@ const Checkout: React.FC = () => {
                     {completedSections.includes("contact-info") && (
                       <button
                         onClick={() => setCurrentSection(null)}
-                        className="button-outlined"
+                        className="button-secondary"
                       >
                         Cancel
                       </button>
@@ -455,7 +455,7 @@ const Checkout: React.FC = () => {
                   href="#billing-info"
                   onClick={() => setCurrentSection("shipping-info")}
                   style={{ width: "100%" }}
-                  className="button-outlined"
+                  className="button-secondary"
                 >
                   Edit
                 </a>
@@ -522,7 +522,7 @@ const Checkout: React.FC = () => {
                     <div className="order-actions">
                       <button
                         onClick={() => setShowShippingOptions(false)}
-                        className="button-outlined"
+                        className="button-secondary"
                       >
                         Cancel
                       </button>
@@ -577,7 +577,7 @@ const Checkout: React.FC = () => {
                     />
                     <div className="order-actions">
                       <button
-                        className="button-outlined"
+                        className="button-secondary"
                         onClick={() => setShowDiscountOptions(false)}
                       >
                         Cancel

@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Footer.css";
 import { assets } from "../../assets";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <footer>
       <button
         style={{ top: 0 }}
-        className="link content-centered"
+        className="link content-centered-absolute"
         onClick={(e) => {
           e.preventDefault();
           window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -24,7 +25,7 @@ function Footer() {
         <Link to={"/shop/category/releases"}>Releases</Link>
         <Link to={"/checkout"}>Checkout</Link>
 
-        {/* <button onClick={openCart}>Your Cart</button> */}
+        <button onClick={() => navigate("/cart")}>Your Cart</button>
         <Link to="/favorites">Your Favorites</Link>
       </div>
       <div className="footer-links">

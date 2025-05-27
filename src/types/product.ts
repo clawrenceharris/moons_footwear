@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Product {
   id: number;
   name: string;
@@ -48,4 +50,14 @@ export interface ProductCategory {
 export interface ProductFlag {
   id: number;
   name: string;
+}
+
+export interface ProductReview {
+  id: number;
+  productId: number;
+  userId: number;
+  stars: number;
+  comment: string;
+  createdAt: string;
+  user: User;
 }

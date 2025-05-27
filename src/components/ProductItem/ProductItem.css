@@ -188,8 +188,7 @@ h4 span {
 }
 
 .error {
-  color: var(--primary-color);
-  line-height: 3em;
+  color: red;
 }
 
 @media screen and (max-width: 896px) {

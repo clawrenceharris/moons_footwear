@@ -1,20 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { assets } from "../../assets";
 import { useMediaQuery } from "@react-hook/media-query";
 import SearchBar from "../SearchBar";
-import { CartButton, MenuButton } from "../buttons/";
+import { CartButton, MenuButton } from "../buttons";
 import NavBar from "../NavBar";
 import SideBar from "../SideBar";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const menuButtonElement = (): HTMLButtonElement | null => {
-    const menuBtn = document.getElementById("menu-btn");
-    return menuBtn as HTMLButtonElement;
-  };
+  const navigate = useNavigate();
+
   const cartButtonRef = useRef<HTMLButtonElement>(null);
   const isDesktop = useMediaQuery("screen and (min-width: 720px)");
 
@@ -24,6 +22,9 @@ function Header() {
   const onCloseNav = () => {
     setIsNavOpen(false);
   };
+  useEffect(() => {
+    setIsNavOpen(false);
+  }, [navigate]);
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");
@@ -40,30 +41,22 @@ function Header() {
     <header>
       {!showMenu && (
         <div className="header-container">
-          <div className="header-left">
+          <div className="header-top">
             <Link to={"/"}>
               {" "}
               <img className="logo" src={assets.logo} alt="logo" />
             </Link>
             <div style={{ display: "flex" }}>
-              <button
-                tabIndex={showMenu ? -1 : undefined}
-                aria-hidden={showMenu}
-                id="sign-up"
-              >
+              <button id="sign-up" onClick={() => navigate("/auth/signup")}>
                 Sign Up
               </button>
-              <button
-                tabIndex={showMenu ? -1 : undefined}
-                aria-hidden={showMenu}
-                id="log-in"
-              >
+              <button id="log-in" onClick={() => navigate("/auth/signin")}>
                 Log In
               </button>
             </div>
           </div>
 
-          <div className="header-right">
+          <div className="header-bottom">
             <MenuButton
               id={!showMenu ? "menu-btn" : undefined}
               aria-controls="nav"
@@ -88,16 +81,9 @@ function Header() {
         </div>
       )}
 
-      <SideBar
-        direction="left"
-        triggerButton={menuButtonElement()}
-        onClose={onCloseNav}
-        isOpen={isNavOpen}
-      >
-        <NavBar aria-hidden={!isNavOpen} className="secondary" />
+      <SideBar onClose={onCloseNav} isOpen={isNavOpen}>
+        <NavBar />
       </SideBar>
-
-      {!showMenu && !isNavOpen && <NavBar className="main" />}
 
       <div
         role="region"

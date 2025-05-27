@@ -17,8 +17,6 @@ interface SideBarProps {
   onClose?: () => void;
   onOpen?: () => void;
   direction?: "left" | "right";
-
-  triggerButton: HTMLButtonElement | null;
 }
 const SideBar: React.FC<SideBarProps> = ({
   children,
@@ -28,7 +26,6 @@ const SideBar: React.FC<SideBarProps> = ({
 
   direction = "left",
   onClose,
-  triggerButton,
 }) => {
   const [isTrapped, setIsTrapped] = React.useState(false);
   const closeSidebar = React.useCallback(() => {
@@ -66,6 +63,7 @@ const SideBar: React.FC<SideBarProps> = ({
         <div style={contentStyle} className="sidebar-content">
           {React.cloneElement(children, {
             isOpen,
+            "aria-hidden": `${isOpen ? "false" : "true"}`,
             onClose: closeSidebar,
           })}
         </div>

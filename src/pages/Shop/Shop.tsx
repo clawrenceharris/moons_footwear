@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product as ProductType } from "../../../../types";
 import { ProductGridItem, SearchBar } from "../../components";
 import { formatCategory } from "../../utils";
 import "./Shop.css";
 
 import { useShop } from "../../context/ShopContext";
+import { Product } from "../../types/product";
 const Shop: React.FC = () => {
   const { category = "All", subcategory } = useParams<{
     category: string;
     subcategory: string;
   }>();
-  const { products, categories, subcategories } = useShop();
-  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
+  const { products, categories, subcategories, isLoading } = useShop();
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [title, setTitle] = useState("");
   useEffect(() => {
     // Build query parameters
@@ -37,7 +37,9 @@ const Shop: React.FC = () => {
         )
     );
   }, [categories, category, products, subcategories, subcategory]);
-
+  if (isLoading) {
+    return <div className="content-centered-absolute">Loading...</div>;
+  }
   return (
     <div className="shop-container">
       <SearchBar />
@@ -50,7 +52,7 @@ const Shop: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div className="content-centered">
+        <div className="content-centered-absolute">
           <p>
             Looks like there are no items in this category. Try checking back
             later.

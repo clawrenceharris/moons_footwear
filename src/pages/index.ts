@@ -8,3 +8,4 @@ export { default as Admin } from "./admin/AdminPanel";
 export { default as Search } from "./Search";
 export { default as EditProduct } from "./admin/EditProduct";
 export { default as Cart } from "./Cart";
+export { default as Favorites } from "./Favorites";
