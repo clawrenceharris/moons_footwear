@@ -46,13 +46,13 @@ function Header() {
               {" "}
               <img className="logo" src={assets.logo} alt="logo" />
             </Link>
-            <div style={{ display: "flex" }}>
-              <button id="sign-up" onClick={() => navigate("/auth/signup")}>
+            <div className="content-row">
+              <Link className="link signup-button" to="/auth/signup">
                 Sign Up
-              </button>
-              <button id="log-in" onClick={() => navigate("/auth/signin")}>
+              </Link>
+              <Link className="link signin-button" to="/auth/signin">
                 Log In
-              </button>
+              </Link>
             </div>
           </div>
 

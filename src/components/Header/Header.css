@@ -87,28 +87,22 @@ header input {
 header img {
   width: 25px;
   height: 25px;
+  max-width: 100px;
 }
-#sign-up {
-  padding: 5px;
-  width: 80px;
-  text-align: center;
-  background-color: #fff;
-  border-radius: 25px;
-  color: #000;
-  font-weight: bold;
+header a.link {
+  border: 1.5px solid white;
+  cursor: pointer;
 }
-
-#log-in {
-  margin-left: 10px;
-  font-weight: bold;
-  text-align: center;
-  padding: 5px;
-  width: 80px;
-  background-color: var(--primary-color);
-  border-radius: 25px;
-  color: #fff;
+header a.link:hover {
+  color: white;
 }
-
+header .signup-button,
+header .signin-button {
+  border-color: white;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+}
 @media only screen and (min-width: 720px) {
   .header-right input {
     margin: 0 10px;

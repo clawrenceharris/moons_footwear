@@ -45,6 +45,7 @@ export default function CartToast() {
       aria-live="polite"
       aria-atomic="true"
       id="cart-toast"
+      hidden={lastItem == null}
       className="cart-toast-container"
     >
       {lastItem && (

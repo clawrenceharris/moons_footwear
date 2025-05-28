@@ -36,7 +36,7 @@ const SignUp = ({ onSubmit }: SignUpProps) => {
         <div>
           <label htmlFor="name">Name:</label>
           <input
-            className="text-input"
+            className="input"
             type="text"
             id="name"
             name="name"
@@ -49,7 +49,7 @@ const SignUp = ({ onSubmit }: SignUpProps) => {
         <div>
           <label htmlFor="email">Email:</label>
           <input
-            className="text-input"
+            className="input"
             type="email"
             name="email"
             autoComplete="email"
@@ -61,7 +61,7 @@ const SignUp = ({ onSubmit }: SignUpProps) => {
         <div>
           <label htmlFor="password">Password:</label>
           <input
-            className="text-input"
+            className="input"
             type="password"
             name="password"
             value={inputs.password}

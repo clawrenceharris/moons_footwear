@@ -27,7 +27,7 @@ const PrivateRoute = () => {
   } else if (!isAuthenticated || !currentUser) {
     return <Navigate to={"/auth/signin"} state={{ from: location }} replace />;
   } else {
-    return <AccessDenied />;
+    return <AccessDenied from={location} />;
   }
 };
 

@@ -46,7 +46,7 @@ function AuthProvider({ children }: AuthContextProps) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-
+  console.log({ user });
   const decodeAndSetUser = useCallback((jwtToken: string) => {
     try {
       const decoded = jwtDecode<JwtPayload>(jwtToken);

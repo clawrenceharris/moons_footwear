@@ -208,7 +208,7 @@ const EditProduct = () => {
 
                 <input
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   id="name"
                   required
                   name="name"
@@ -223,7 +223,7 @@ const EditProduct = () => {
 
                 <select
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   id="category"
                   required
                   name="category_id"
@@ -244,7 +244,7 @@ const EditProduct = () => {
 
                 <select
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   id="subcategory"
                   required
                   name="subcategory_id"
@@ -263,7 +263,7 @@ const EditProduct = () => {
 
                 <select
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   id="brand"
                   required
                   name="brand_id"
@@ -285,7 +285,7 @@ const EditProduct = () => {
                 <label htmlFor="price">Price</label>
                 <input
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   type="number"
                   step=".01"
                   name="price"
@@ -300,7 +300,7 @@ const EditProduct = () => {
                 <input
                   onChange={handleChange}
                   step=".01"
-                  className="text-input"
+                  className="input"
                   type="number"
                   name="discount"
                   id="discount"
@@ -311,7 +311,7 @@ const EditProduct = () => {
                 <label htmlFor="stock-quantity">Stock Quantity</label>
                 <input
                   onChange={handleChange}
-                  className="text-input"
+                  className="input"
                   type="number"
                   name="stock_quantity"
                   id="stock-quantity"
@@ -322,7 +322,7 @@ const EditProduct = () => {
             <div>
               <label htmlFor="description">Description</label>
               <textarea
-                className="text-input"
+                className="input"
                 name="description"
                 id="description"
                 onChange={handleChange}
@@ -379,7 +379,7 @@ const EditProduct = () => {
                         <label htmlFor="image-url">Images</label>
                         <input
                           type="text"
-                          className="text-input"
+                          className="input"
                           name="image_url"
                           id="image-url"
                           required
@@ -391,7 +391,7 @@ const EditProduct = () => {
                         <label htmlFor="alt-text">Alt Text</label>
                         <input
                           type="text"
-                          className="text-input"
+                          className="input"
                           name="alt_text"
                           id="alt-text"
                           onChange={(e) => handleImageChange(e, index)}
@@ -438,7 +438,7 @@ const EditProduct = () => {
                         <label htmlFor="new-image-url">Images</label>
                         <input
                           type="text"
-                          className="text-input"
+                          className="input"
                           name="image_url"
                           id="new-image-url"
                           onChange={(e) => handleImageChange(e, index)}
@@ -449,7 +449,7 @@ const EditProduct = () => {
                         <label htmlFor="alt-text">Alt Text</label>
                         <input
                           type="text"
-                          className="text-input"
+                          className="input"
                           name="alt_text"
                           id="alt-text"
                           onChange={(e) => handleImageChange(e, index)}

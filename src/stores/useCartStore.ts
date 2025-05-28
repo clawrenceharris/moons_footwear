@@ -3,7 +3,7 @@ import { CartItem } from "../types/product";
 
 interface CartStore {
   cart: CartItem[];
-  subtotal: number;
+  getSubtotal: () => number;
   addItem: (item: CartItem) => void;
   removeItem: (productId: number) => void;
   clearCart: () => void;
@@ -21,10 +21,12 @@ interface CartStore {
 
 export const useCartStore = create<CartStore>((set, get) => ({
   cart: [],
-  subtotal: get()?.cart
-    ? get().cart.reduce((total, current) => total + current.price, 0)
-    : 0,
-
+  getSubtotal: () => {
+    const cart = get().cart;
+    return cart
+      ? get().cart.reduce((total, current) => total + current.price, 0)
+      : 0;
+  },
   addItem: (newItem) => {
     const existing = get().cart.find((item) => item.id === newItem.id);
     if (existing) {

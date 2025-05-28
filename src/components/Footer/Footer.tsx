@@ -92,7 +92,7 @@ function Footer() {
               Enter your email
             </label>
             <input
-              className="text-input"
+              className="input"
               type="email"
               name="email"
               id="email"

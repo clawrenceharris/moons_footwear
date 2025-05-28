@@ -13,7 +13,7 @@ const SearchBar = (props: HTMLAttributes<HTMLInputElement>) => {
     <form className="searchbar-container">
       <input
         onChange={onChange}
-        className="text-input searchbar"
+        className="input searchbar"
         type="text"
         placeholder="Search"
         {...props}

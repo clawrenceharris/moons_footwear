@@ -23,7 +23,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
   };
   return (
     <div>
-      <h1>Sign In</h1>
+      <h1>Log In</h1>
       <p className="description">
         Sign in to access your favorite items, view orders and more!
       </p>
@@ -35,7 +35,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
         <div>
           <label>Email:</label>
           <input
-            className="text-input"
+            className="input"
             type="email"
             name="email"
             autoComplete="email"
@@ -47,7 +47,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
         <div>
           <label>Password:</label>
           <input
-            className="text-input"
+            className="input"
             type="password"
             name="password"
             autoComplete="password"
@@ -58,7 +58,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
         </div>
 
         <button className=" content-centered button-primary" type="submit">
-          Sign In
+          Log In
         </button>
       </form>
     </div>

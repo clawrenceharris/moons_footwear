@@ -90,7 +90,7 @@ const Home: React.FC = () => {
 
             <form action="">
               <input
-                className="text-input"
+                className="input"
                 type="email"
                 name="email"
                 id="email"

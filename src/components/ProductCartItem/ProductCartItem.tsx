@@ -45,10 +45,12 @@ function ProductCartItem({ product }: { product: CartItem }) {
         </div>
 
         <div>
-          <p className="size">
-            {" "}
-            {product.size} {product.category}
-          </p>
+          <div className="content-row">
+            {product.variants?.sizes.map((item) => (
+              <div className="size-box">{item}</div>
+            ))}
+          </div>
+          <p className="size"> {product.category}</p>
         </div>
 
         <div>

@@ -26,7 +26,7 @@ const AdminRoute = () => {
   }
   if (!isAuthenticated || !user) {
     return <Navigate to={"/auth/signin"} state={{ from: location }} replace />;
-  } else if (!user.isAdmin) {
+  } else if (!user.is_admin) {
     return <AccessDenied from={location} />;
   } else {
     return <Outlet context={auth} />;
