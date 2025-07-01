@@ -13,6 +13,7 @@ import { assets } from "../../../assets";
 import { useShop } from "../../../context";
 import { useProduct } from "../../../hooks";
 import NotFound from "../../NotFound/NotFound";
+import { ProductImage } from "../../../types/product";
 const EditProduct = () => {
   const { id } = useParams();
   const { product, isLoading } = useProduct(Number(id));
@@ -42,11 +43,11 @@ const EditProduct = () => {
   });
   const { flags, categories, subcategories, brands } = useShop();
   const [checkedFlags, setCheckedFlags] = useState<string[]>([]);
-
+  const [images, setImages] = useState<ProductImage[]>([]);
   const [newImages, setNewImages] = useState([
     {
-      image_url: "",
-      alt_text: "",
+      imageUrl: "",
+      altText: "",
     },
   ]);
   useEffect(() => {
@@ -63,6 +64,7 @@ const EditProduct = () => {
       created_at: product.createdAt,
       published: product.published,
     });
+    setImages(product.images);
   }, [product]);
   const handleChange = (
     e: React.ChangeEvent<
@@ -83,22 +85,10 @@ const EditProduct = () => {
       prev.map((img, i) => (i === index ? { ...img, [name]: value } : img))
     );
   };
-  const handleAddImages = (e: React.FormEvent<HTMLFormElement>) => {
-    if (!product) return;
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!product) return;
     e.preventDefault();
-
-    const promises = [];
-    for (let i = 0; i < newImages.length; i++) {
-      promises.push(addProductImage(product.id, newImages[i]));
-    }
-
-    Promise.all(promises).catch((err) => {
-      setError(err.message);
-    });
-  };
-  const handleSubmit = () => {
-    if (!product) return;
     updateProduct(product.id, inputs)
       .then(() => {
         console.log("Product updated");
@@ -111,11 +101,30 @@ const EditProduct = () => {
   const handleResetImages = () => {
     if (!product) return;
 
-    setNewImages([{ image_url: "", alt_text: "" }]);
+    setNewImages([{ imageUrl: "", altText: "" }]);
+  };
+  const handleAddImages = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!product) return;
+
+    e.preventDefault();
+
+    const promises = [];
+    for (let i = 0; i < newImages.length; i++) {
+      promises.push(addProductImage(product.id, newImages[i]));
+      setImages((prev) => [
+        ...prev,
+        { id: i, ...newImages[i], productId: product.id },
+      ]);
+    }
+
+    Promise.all(promises)
+      .then(() => {})
+      .catch((err) => {
+        setError(err.error);
+      });
   };
   const handleDeleteImage = (id: number) => {
     if (!product) return;
-
     deleteImage(product.id, id).catch((err) => {
       setError(err.message);
     });
@@ -367,20 +376,20 @@ const EditProduct = () => {
             </button>
           </form>
         </section>
-        {product.images.length > 0 && (
+        {images.length > 0 && (
           <section>
             <h2>Update Images</h2>
             <form>
               <div className="flex-content">
                 <div className="content-row">
-                  {product.images.map((item, index) => (
+                  {images.map((item, index) => (
                     <div>
                       <div>
                         <label htmlFor="image-url">Images</label>
                         <input
                           type="text"
                           className="input"
-                          name="image_url"
+                          name="imageUrl"
                           id="image-url"
                           required
                           onChange={(e) => handleImageChange(e, index)}
@@ -392,7 +401,7 @@ const EditProduct = () => {
                         <input
                           type="text"
                           className="input"
-                          name="alt_text"
+                          name="altText"
                           id="alt-text"
                           onChange={(e) => handleImageChange(e, index)}
                           value={item.altText || ""}
@@ -424,7 +433,7 @@ const EditProduct = () => {
                   onClick={() =>
                     setNewImages((prev) => [
                       ...prev,
-                      { image_url: "", alt_text: "", product_id: product.id },
+                      { imageUrl: "", altText: "" },
                     ])
                   }
                   className="button-circle"
@@ -439,10 +448,10 @@ const EditProduct = () => {
                         <input
                           type="text"
                           className="input"
-                          name="image_url"
+                          name="imageUrl"
                           id="new-image-url"
                           onChange={(e) => handleImageChange(e, index)}
-                          value={item.image_url}
+                          value={item.imageUrl}
                         />
                       </div>
                       <div>

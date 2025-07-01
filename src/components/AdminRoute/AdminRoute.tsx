@@ -8,6 +8,8 @@ const AdminRoute = () => {
   const auth = useAuth();
 
   const { user, error, loading, isAuthenticated } = auth;
+  console.log(user);
+
   const location = useLocation();
 
   if (loading) {
@@ -26,7 +28,7 @@ const AdminRoute = () => {
   }
   if (!isAuthenticated || !user) {
     return <Navigate to={"/auth/signin"} state={{ from: location }} replace />;
-  } else if (!user.is_admin) {
+  } else if (!user.isAdmin) {
     return <AccessDenied from={location} />;
   } else {
     return <Outlet context={auth} />;

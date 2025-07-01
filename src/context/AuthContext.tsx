@@ -17,7 +17,6 @@ interface JwtPayload {
   user: User;
   iat: number; // Issued At
   exp: number; // Expiration Time
-  // Add any other standard JWT claims if you need them
 }
 
 export type AuthContextType = {
@@ -44,9 +43,9 @@ function AuthProvider({ children }: AuthContextProps) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  console.log({ user });
+
   const decodeAndSetUser = useCallback((jwtToken: string) => {
     try {
       const decoded = jwtDecode<JwtPayload>(jwtToken);
@@ -64,14 +63,13 @@ function AuthProvider({ children }: AuthContextProps) {
 
   // Effect to check for token in localStorage on initial load
   useEffect(() => {
-    setLoading(true);
-
     const storedToken = localStorage.getItem("jwt_token");
     if (storedToken) {
       setToken(storedToken);
+      console.log("first");
       decodeAndSetUser(storedToken);
+      setLoading(false);
     }
-    setLoading(false);
   }, [decodeAndSetUser]);
 
   const signin = async (data: {

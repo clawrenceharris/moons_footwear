@@ -1,4 +1,4 @@
-import { Product } from "../../../../types";
+import { Product } from "../../types/product";
 import api from "../axios";
 
 export const deleteProduct = async (id: number) => {
@@ -38,7 +38,7 @@ export const deleteImage = async (
 
 export const addProductImage = async (
   id: number,
-  body: { image_url: string; alt_text?: string | null }
+  body: { imageUrl: string; altText?: string | null }
 ) => {
   const response = await api.post(`/admin/product/${id}/images`, body);
   return response.data;

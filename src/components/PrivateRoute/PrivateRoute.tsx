@@ -7,7 +7,6 @@ const PrivateRoute = () => {
 
   const { user: currentUser, error, loading, isAuthenticated } = auth;
   const location = useLocation();
-
   if (loading) {
     return (
       <div className="content-centered-absolute">
@@ -24,7 +23,7 @@ const PrivateRoute = () => {
   }
   if (isAuthenticated && currentUser) {
     return <Outlet context={auth} />;
-  } else if (!isAuthenticated || !currentUser) {
+  } else if (!isAuthenticated) {
     return <Navigate to={"/auth/signin"} state={{ from: location }} replace />;
   } else {
     return <AccessDenied from={location} />;
