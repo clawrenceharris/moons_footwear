@@ -87,7 +87,7 @@ ul {
 
 #mailing-list h2 {
   background-image: url(../../assets/images/mailinglist-graphic.jpeg);
-  height: 90px;
+  min-height: 100px;
   color: white;
   display: flex;
   align-items: center;
@@ -106,7 +106,7 @@ ul {
 }
 
 #mailing-list button {
-  margin-top: 30px;
+  margin: 30px auto;
 }
 #mailing-list input {
   width: 300px;
@@ -161,5 +161,15 @@ ul {
 
   #categories {
     flex-direction: row;
+  }
+  .featured-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .featured-container img {
+    flex: 1;
+    min-width: 100%;
+    height: 100%;
   }
 }

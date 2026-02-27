@@ -3,7 +3,7 @@ import "./SignIn.css";
 interface SignInProps {
   onSubmit: (
     e: React.FormEvent<HTMLFormElement>,
-    data: { email: string; password: string }
+    data: { email: string; password: string },
   ) => void;
 }
 
@@ -22,7 +22,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
     onSubmit(e, inputs);
   };
   return (
-    <div>
+    <section>
       <h1>Log In</h1>
       <p className="description">
         Sign in to access your favorite items, view orders and more!
@@ -61,7 +61,7 @@ const SignIn = ({ onSubmit }: SignInProps) => {
           Log In
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

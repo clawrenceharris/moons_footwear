@@ -402,7 +402,9 @@ label {
 .input:hover {
   background-color: white;
 }
-
+section {
+  padding: 13px;
+}
 .input:focus {
   border-color: black;
   background-color: white;

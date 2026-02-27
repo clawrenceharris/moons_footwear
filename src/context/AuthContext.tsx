@@ -46,11 +46,12 @@ function AuthProvider({ children }: AuthContextProps) {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const decodeAndSetUser = useCallback((jwtToken: string) => {
     try {
+      setLoading(true);
       const decoded = jwtDecode<JwtPayload>(jwtToken);
       setUser(decoded.user);
       setIsAuthenticated(true);
@@ -61,6 +62,8 @@ function AuthProvider({ children }: AuthContextProps) {
       setToken(null);
       setIsAuthenticated(false);
       localStorage.removeItem("jwt_token");
+    } finally {
+      setLoading(false);
     }
   }, []);
 

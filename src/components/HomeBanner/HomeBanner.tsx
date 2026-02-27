@@ -2,17 +2,17 @@ import { featured } from "../../data/products";
 import { Link } from "react-router-dom";
 import "./HomeBanner.css";
 
-function Banner() {
+function HeroBanner() {
   return (
     <div className="banner">
-      {/* {featured.srcset.map((item, index) => (
+      {featured.srcset?.map((item, index) => (
         <img
           key={index}
           id={"banner-image" + (index + 1)}
           src={item}
           alt={featured.name}
-        /> */}
-      {/* ))} */}
+        />
+      ))}
 
       <div className="overlay">
         <div className="text-container">
@@ -32,4 +32,4 @@ function Banner() {
   );
 }
 
-export default Banner;
+export default HeroBanner;

@@ -7,20 +7,24 @@ import { products } from "../../data/products";
 import "./Home.css";
 import SeasonalPicks from "../../components/SeasonalPicks/SeasonalPicks";
 import type { Product } from "../../types/product";
+import featured1 from "../../assets/images/featured1.jpeg";
+import featured2 from "../../assets/images/featured2.jpeg";
+import HeroBanner from "../../components/HomeBanner/HomeBanner";
+
 const Home: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div>
       <div>
-        {/* <HomeBanner srcset={[bannerImage3, bannerImage1, bannerImage2]} /> */}
+        <HeroBanner />
 
-        {/* <section id="featured">
+        <section id="featured">
           <h2>Featured</h2>
-          <div className="content-row">
-            <img src={require("../../assets/images/featured1.jpeg")} alt="" />
-            <img src={require("../../assets/images/featured2.jpeg")} alt="" />
+          <div className="featured-container">
+            <img src={featured1} alt="" />
+            <img src={featured2} alt="" />
           </div>
-        </section> */}
+        </section>
 
         <section id="new-arrivals">
           <h2>New Arrivals </h2>
