@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import measuringGuide from "../../assets/images/foot-measuring.png";
 import { useLocation } from "react-router-dom";
 import { SizeChart } from "../../components";
@@ -8,11 +8,6 @@ const SizeGuide: React.FC = () => {
   const [unitType, setUnitType] = useState<"CM" | "IN">("IN");
   const location = useLocation();
   const product = location.state;
-  const selectBox = document.getElementById("size-select");
-  const selectedValue = "US";
-  useEffect(() => {
-    setSizeType(selectedValue);
-  }, [selectBox, selectedValue]);
 
   return (
     <div>

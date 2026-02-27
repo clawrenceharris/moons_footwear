@@ -34,7 +34,7 @@ const Shop: React.FC = () => {
     return <div className="content-centered-absolute">Loading...</div>;
   }
   return (
-    <div className="shop-container">
+    <section className="shop-container">
       <SearchBar />
 
       <h1>Shop {title}</h1>
@@ -52,7 +52,7 @@ const Shop: React.FC = () => {
           </p>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
