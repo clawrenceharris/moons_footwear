@@ -1,7 +1,8 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthContext";
-import { Product } from "../types/product";
 import { addFavorites, fetchFavorites } from "../api/favorites";
+import type { Product } from "../types/product";
 
 export type FavoritesContextType = {
   favorites: Product[];
@@ -10,22 +11,22 @@ export type FavoritesContextType = {
   loading: boolean;
 };
 const FavoritesContext = createContext<FavoritesContextType | undefined>(
-  undefined
+  undefined,
 );
 
 function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const { currentUserId } = useAuth();
+  const { user } = useAuth();
   const [favorites, setFavorites] = useState<Product[]>([]);
 
   const addItem = (item: Product) => {
-    if (!currentUserId) {
+    if (!user?.id) {
       setError("Could not add item to favorites: User not authenticated");
       return;
     }
 
-    addFavorites(currentUserId, item)
+    addFavorites(user.id, item)
       .then((res) => {
         setFavorites(res);
       })
@@ -34,20 +35,27 @@ function FavoritesProvider({ children }: { children: React.ReactNode }) {
       });
   };
   useEffect(() => {
-    if (!currentUserId) {
-      return;
-    }
-    setLoading(true);
-    fetchFavorites(currentUserId)
-      .then((res) => {
-        setFavorites(res);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [currentUserId]);
+    const getFavoirtes = () => {
+      if (!user?.id) {
+        return;
+      }
+      try {
+        setLoading(true);
+        fetchFavorites(user.id)
+          .then((res) => {
+            setFavorites(res);
+            setLoading(false);
+          })
+          .catch((err) => {
+            setError(err.message);
+            setLoading(false);
+          });
+      } catch {
+        alert("Error getting favoirtes");
+      }
+    };
+    getFavoirtes();
+  }, [user?.id]);
 
   return (
     <FavoritesContext.Provider

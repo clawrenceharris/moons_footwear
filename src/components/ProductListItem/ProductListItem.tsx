@@ -1,8 +1,11 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProductListItem.css";
+import type { Product } from "../../types/product";
 
-function ProductListItem({ product }) {
+interface ProductListItemProps {
+  product: Product;
+}
+function ProductListItem({ product }: ProductListItemProps) {
   const navigate = useNavigate();
 
   return (

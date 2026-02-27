@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import { assets } from "../../assets";
 import { useMediaQuery } from "@react-hook/media-query";
@@ -11,7 +11,6 @@ import SideBar from "../SideBar";
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navigate = useNavigate();
 
   const cartButtonRef = useRef<HTMLButtonElement>(null);
   const isDesktop = useMediaQuery("screen and (min-width: 720px)");
@@ -22,9 +21,7 @@ function Header() {
   const onCloseNav = () => {
     setIsNavOpen(false);
   };
-  useEffect(() => {
-    setIsNavOpen(false);
-  }, [navigate]);
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");

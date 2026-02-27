@@ -1,11 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   createContext,
   useContext,
   useState,
-  ReactNode,
+  type ReactNode,
   useEffect,
 } from "react";
-import {
+import type {
   Product,
   ProductBrand,
   ProductCategory,
@@ -50,9 +52,10 @@ const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     const fetchAllData = async () => {
       try {
+        setIsLoading(true);
+
         const [products, categoires, subcategories, flags, brands] =
           await Promise.all([
             fetchAllProducts(),
@@ -66,18 +69,13 @@ const ShopProvider = ({ children }: { children: ReactNode }) => {
         setSubategories(subcategories);
         setFlags(flags);
         setBrands(brands);
-      } catch (err: any) {
-        throw new Error(err.message);
+      } catch {
+        setError("Failed to load.");
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchAllData()
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setIsLoading(false);
-      });
+    fetchAllData();
   }, []);
   return (
     <ShopContext.Provider

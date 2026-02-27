@@ -1,6 +1,5 @@
 import React from "react";
 import { ProductItem } from "../../components";
-import "./Product.css";
 import { useParams } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
 import { useProduct, useReviews } from "../../hooks";
@@ -48,7 +47,7 @@ const Product: React.FC = () => {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <dt>{item.user.first_name + " " + item.user.last_name} </dt>
+                  <dt>{item.user.name} </dt>
 
                   <div className="stars">
                     {Array(item.stars)

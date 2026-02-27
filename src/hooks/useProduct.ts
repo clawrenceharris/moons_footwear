@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { Product } from "../types/product";
+import type { Product } from "../types/product";
 import { fetchProduct } from "../api/admin/products";
 
 const useProduct = (id?: number) => {
@@ -12,18 +13,20 @@ const useProduct = (id?: number) => {
       setIsLoading(false);
       return;
     }
-    setIsLoading(true);
-    fetchProduct(id)
-      .then((res) => {
-        setProduct(res);
-        setIsLoading(false);
-      })
-      .catch((err) => {
+
+    const getProduct = async () => {
+      try {
+        const product = await fetchProduct(id);
+        setProduct(product);
+      } catch (err: any) {
         setError(
-          err instanceof Error ? err.message : "An unknown error occurred"
+          err instanceof Error ? err.message : "An unknown error occurred",
         );
+      } finally {
         setIsLoading(false);
-      });
+      }
+    };
+    getProduct();
   }, [id]);
 
   return {

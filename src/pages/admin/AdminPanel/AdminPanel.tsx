@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductGridItem, SearchBar } from "../../../components";
 import { useNavigate } from "react-router-dom";
 import {
@@ -6,20 +6,22 @@ import {
   deleteProduct,
   fetchProducts,
 } from "../../../api/admin/products";
-import { Product } from "../../../types/product";
+import { type Product } from "../../../types/product";
 
 const AdminPanel = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   useEffect(() => {
-    fetchProducts()
-      .then((res) => {
-        setProducts(res);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    const getProducts = async () => {
+      try {
+        const products = await fetchProducts();
+        setProducts(products);
+      } catch {
+        setError("Failed to load products.");
+      }
+    };
+    getProducts();
   }, []);
   const handleDelete = (id: number) => {
     deleteProduct(id)

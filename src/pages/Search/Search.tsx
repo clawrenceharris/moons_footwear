@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { fetchProductsBySearch } from "../../api/search";
 import SearchBar from "../../components/SearchBar";
 import "./Search.css";
 import ProductGridItem from "../../components/ProductGridItem";
+import { fetchProducts } from "../../api/admin/products";
 const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
@@ -12,31 +13,23 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
-    // setLoading(true);
-    if (!query) {
-      //   fetchProducts()
-      //     .then((res) => {
-      //       setSearchResults(res);
-      //       setLoading(false);
-      //     })
-      //     .catch((err) => {
-      //       console.error("Error fetching products", err);
-      //       setError(err.message);
-      //       setLoading(false);
-      //     });
-      return;
-    }
-
-    fetchProductsBySearch(query)
-      .then((res) => {
-        setSearchResults(res);
+    const fetchResults = async () => {
+      try {
+        const results = await fetchProductsBySearch(query);
+        const allProducts = await fetchProducts();
+        if (results.length > 0) {
+          setSearchResults(results);
+        } else {
+          setSearchResults(allProducts);
+        }
+      } catch (err) {
+        console.error("Error fetching products: " + err);
+        setError("Failed to load results");
+      } finally {
         setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching products", err);
-        setError(err.message);
-        setLoading(false);
-      });
+      }
+    };
+    fetchResults();
   }, [query]);
   if (loading) {
     return <div>Loading...</div>;

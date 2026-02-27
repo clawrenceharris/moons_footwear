@@ -1,8 +1,8 @@
-import React from "react";
 import { useCartStore } from "../../stores";
 import { ProductCartItem } from "../../components";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
+import type { CartItem } from "../../types/product";
 const Cart = () => {
   const { cart, clearCart } = useCartStore();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Cart = () => {
 
       {cart.length > 0 ? (
         <div className="content-grid">
-          {cart.map((item) => (
+          {cart.map((item: CartItem) => (
             <ProductCartItem product={item} />
           ))}
         </div>

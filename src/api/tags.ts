@@ -1,4 +1,8 @@
-import { ProductBrand, ProductCategory, ProductFlag } from "../../../types";
+import type {
+  ProductBrand,
+  ProductCategory,
+  ProductFlag,
+} from "../types/product";
 import api from "./axios";
 
 export const fetchAllCategories = async (): Promise<ProductCategory[]> => {

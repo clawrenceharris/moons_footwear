@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { User } from "../types/user";
+import type { User } from "../types/user";
 import { fetchUser } from "../api/user";
 import { useAuth } from "./AuthContext";
 
@@ -15,22 +17,26 @@ function UserProvider({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const { currentUserId } = useAuth();
+  const { user: authUser } = useAuth();
+
   useEffect(() => {
-    if (!currentUserId) {
-      return;
-    }
-    setLoading(true);
-    fetchUser(currentUserId)
-      .then((res) => {
-        setCurrentUser(res);
-        setLoading(false);
-      })
-      .catch((err) => {
+    const getUser = async () => {
+      if (!authUser?.id) {
+        return;
+      }
+      try {
+        setLoading(true);
+        const user = await fetchUser(authUser.id);
+        setCurrentUser(user);
+      } catch (err: any) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
-  }, [currentUserId]);
+      }
+    };
+
+    getUser();
+  }, [authUser?.id]);
 
   return (
     <UserContext.Provider

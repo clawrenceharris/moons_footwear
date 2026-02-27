@@ -1,14 +1,13 @@
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./NavBar.css";
 import SearchBar from "../SearchBar";
-import { SideBarContentProps } from "../SideBar/SideBar";
 import { assets } from "../../assets";
+import type { SideBarContentProps } from "../SideBar/SideBar";
 
 interface NavigationProps extends SideBarContentProps {
   isOpen?: boolean;
 }
-const NavBar = ({ isOpen, onClose, ...props }: NavigationProps) => {
+const NavBar = ({ onClose, ...props }: NavigationProps) => {
   return (
     <nav id="nav" {...props}>
       <div className="nav-top">

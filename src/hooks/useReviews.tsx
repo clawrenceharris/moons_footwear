@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchProductReviews } from "../api/reviews";
-import { ProductReview } from "../types/product";
+import type { ProductReview } from "../types/product";
 
 const useReviews = (productId: number) => {
   const [reviews, setReviews] = useState<ProductReview[]>([]);
@@ -16,7 +16,7 @@ const useReviews = (productId: number) => {
         setReviews(reviews);
       } catch (err) {
         setError(
-          err instanceof Error ? err.message : "An unknown error occurred"
+          err instanceof Error ? err.message : "An unknown error occurred",
         );
       } finally {
         setIsLoading(false);

@@ -1,4 +1,4 @@
-import { User } from "../types/user";
+import type { User } from "../types/user";
 import api from "./axios";
 
 export const fetchUser = async (id: number): Promise<User> => {

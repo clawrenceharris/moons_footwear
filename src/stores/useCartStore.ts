@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { create } from "zustand";
-import { CartItem } from "../types/product";
+import type { CartItem } from "../types/product";
 
 interface CartStore {
   cart: CartItem[];
@@ -10,12 +11,12 @@ interface CartStore {
   incrementItemQuantity: (
     productId: number,
     color?: string,
-    size?: string
+    size?: string,
   ) => void;
   decrementItemQuantity: (
     productId: number,
     color?: string,
-    size?: string
+    size?: string,
   ) => void;
 }
 
@@ -34,7 +35,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
         cart: get().cart.map((item) =>
           item === existing
             ? { ...item, quantity: item.quantity + newItem.quantity }
-            : item
+            : item,
         ),
       });
     } else {
@@ -45,21 +46,21 @@ export const useCartStore = create<CartStore>((set, get) => ({
   removeItem: (productId) => {
     set({ cart: get().cart.filter((item) => item.id !== productId) });
   },
-  incrementItemQuantity: (productId, color, size) => {
+  incrementItemQuantity: (productId, _color, _size) => {
     set({
       cart: get().cart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item,
       ),
     });
   },
 
-  decrementItemQuantity: (productId, color, size) => {
+  decrementItemQuantity: (productId, _color, _size) => {
     set({
       cart: get()
         .cart.map((item) =>
           item.id === productId
             ? { ...item, quantity: item.quantity - 1 }
-            : item
+            : item,
         )
         .filter((item) => item.quantity > 0), // remove if quantity hits 0
     });

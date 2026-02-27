@@ -1,5 +1,5 @@
-import React from "react";
-import { Location, useNavigate } from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { type Location, useNavigate } from "react-router-dom";
 
 const AccessDenied = ({ from }: { from: Location<any> }) => {
   const navigate = useNavigate();

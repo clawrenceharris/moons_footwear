@@ -1,5 +1,3 @@
-import React from "react";
-
 import { featured } from "../../data/products";
 import { Link } from "react-router-dom";
 import "./HomeBanner.css";
@@ -22,8 +20,9 @@ function Banner() {
           <p>{featured.description}</p>
         </div>
         <span>
-          {featured.salePrice && (featured.salePrice / (featured?.price || 1)) * 100}%
-          OFF&nbsp;
+          {featured.salePrice &&
+            (featured.salePrice / (featured?.price || 1)) * 100}
+          % OFF&nbsp;
           <Link to={"/product"} state={featured}>
             SHOP NOW
           </Link>{" "}

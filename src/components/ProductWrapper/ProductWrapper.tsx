@@ -1,6 +1,6 @@
 import React from "react";
 import { useFavorites } from "../../context/FavoritesContext";
-import { Product } from "../../types/product";
+import type { Product } from "../../types/product";
 export interface ProductItemProps {
   onFavoriteClick: (item: Product) => void;
 }

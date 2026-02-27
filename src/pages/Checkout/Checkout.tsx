@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { type ChangeEvent, useEffect, useState } from "react";
 import { formatCurrency } from "../../utils";
 import { useCartStore } from "../../stores";
 import { ProductCartItem } from "../../components";
+import type { CartItem } from "../../types/product";
 
 const Checkout: React.FC = () => {
-  const [shipping, setShipping] = useState<number>(0);
   const [discount, setDiscount] = useState<number>(0);
   const [inputs, setInputs] = useState({
     firstName: "",
@@ -17,28 +17,29 @@ const Checkout: React.FC = () => {
     expirationDate: undefined,
     state: undefined,
     cvv: undefined,
+    shipping: 0,
   });
-  const [completedSections, setCompletedSections] = useState<string[]>([]);
+  const completedSections = 3;
   const [addressIsSame, setAddressIsSame] = useState<boolean>(true);
   const [showShippingOptions, setShowShippingOptions] =
     useState<boolean>(false);
   const [showDiscountOptions, setShowDiscountOptions] =
     useState<boolean>(false);
   const { getSubtotal, cart } = useCartStore();
-  const tax = getSubtotal() * 0.06;
+  const subtotal = getSubtotal();
+  const tax = subtotal * 0.06;
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  window.onload = () => {
-    alert(
-      "Today only — 10% off your purshase — Use promo code MYSTERYDEAL at checkout!"
-    );
-  };
+
   useEffect(() => {
-    setCompletedSections([]);
-    setShipping(0);
+    window.onload = () => {
+      alert(
+        "Today only — 10% off your purshase — Use promo code MYSTERYDEAL at checkout!",
+      );
+    };
   }, []);
 
   const AddressInfo = (
@@ -220,7 +221,7 @@ const Checkout: React.FC = () => {
       <div className="order-summary-box">
         <h2>Order Summary</h2>
         <div className="content-grid">
-          {cart.map((item) => (
+          {cart.map((item: CartItem) => (
             <ProductCartItem product={item} />
           ))}
         </div>
@@ -229,12 +230,16 @@ const Checkout: React.FC = () => {
           <div className="details-flex details-border">
             <h4>Subtotal:</h4>
 
-            <p>{formatCurrency(getSubtotal())}</p>
+            <p>{formatCurrency(subtotal)}</p>
           </div>
           <div className="details-border">
             <div className="details-flex">
               <h4>Shipping:</h4>
-              <p>{shipping === 0 ? "Free" : formatCurrency(shipping)}</p>
+              <p>
+                {inputs.shipping === 0
+                  ? "Free"
+                  : formatCurrency(inputs.shipping)}
+              </p>
             </div>
 
             {!showShippingOptions ? (
@@ -281,7 +286,7 @@ const Checkout: React.FC = () => {
                   <button
                     onClick={() => {
                       const input = document.querySelector(
-                        ".radio-btn input:checked"
+                        ".radio-btn input:checked",
                       );
                       if (!input) {
                         return;
@@ -359,14 +364,14 @@ const Checkout: React.FC = () => {
 
           <div className="details-flex details-border">
             <h4>Order Total:</h4>
-            <p>{formatCurrency(subtotal + tax + shipping + discount)}</p>
+            <p>{formatCurrency(subtotal + tax + inputs.shipping + discount)}</p>
           </div>
         </div>
 
         <button
           style={{ width: "100%" }}
           className={
-            completedSections.length >= 3 ? "button-primary" : "button-disabled"
+            completedSections == 3 ? "button-primary" : "button-disabled"
           }
         >
           Place Order

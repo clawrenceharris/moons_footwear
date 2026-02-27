@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useEffect,
-} from "react";
-import { useNavigate } from "react-router-dom";
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 interface NavContextType {
   isNavOpen: boolean;
@@ -28,18 +22,6 @@ const useNav = () => {
 const NavProvider = ({ children }: { children: ReactNode }) => {
   const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const [activeLink, setActiveLink] = useState<string>("home");
-  const navigate = useNavigate();
-  useEffect(() => {
-    closeNav();
-  }, [navigate]);
-
-  const openNav = () => {
-    const nav = document.getElementById("nav");
-    nav?.classList.add("open");
-    nav?.classList.remove("closed");
-
-    setIsNavOpen(true);
-  };
 
   const closeNav = () => {
     const nav = document.getElementById("nav");
@@ -47,6 +29,13 @@ const NavProvider = ({ children }: { children: ReactNode }) => {
     nav.classList.remove("open");
     nav.classList.add("closed");
     setIsNavOpen(false);
+  };
+  const openNav = () => {
+    const nav = document.getElementById("nav");
+    nav?.classList.add("open");
+    nav?.classList.remove("closed");
+
+    setIsNavOpen(true);
   };
 
   return (

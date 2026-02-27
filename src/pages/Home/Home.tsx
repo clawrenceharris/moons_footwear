@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { products } from "../../data/products";
 import "./Home.css";
 import SeasonalPicks from "../../components/SeasonalPicks/SeasonalPicks";
+import type { Product } from "../../types/product";
 const Home: React.FC = () => {
   const navigate = useNavigate();
   return (
@@ -64,14 +65,31 @@ const Home: React.FC = () => {
               .filter((item) => {
                 const totalStars = item.reviews.reduce(
                   (stars, item) => item.stars + stars,
-                  0
+                  0,
                 );
                 const averageStars = totalStars / item.reviews.length;
                 return averageStars >= 4;
               })
-              .map((item, index) => (
-                <ProductListItem key={index} product={item} />
-              ))}
+              .map((item, index) => {
+                const product: Product = {
+                  ...item,
+                  description: "",
+                  category_id: 0,
+                  subcategory_id: 0,
+                  brand_id: 0,
+                  stockQuantity: 0,
+                  createdAt: "",
+                  discount: null,
+                  subcategory: "",
+                  brand: undefined,
+                  published: false,
+                  isArchived: false,
+                  images: [],
+                  flags: [],
+                  variants: { colors: item.colors, sizes: item.sizes },
+                };
+                return <ProductListItem key={index} product={product} />;
+              })}
           </div>
         </section>
 

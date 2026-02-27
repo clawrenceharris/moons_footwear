@@ -1,12 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./globals.css";
+import App from "./App.tsx";
 import { AuthProvider, NavProvider, ShopProvider } from "./context";
 import { HashRouter as BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "./components";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
     <BrowserRouter>
       <ErrorBoundary>
         <AuthProvider>
@@ -18,5 +19,5 @@ root.render(
         </AuthProvider>
       </ErrorBoundary>
     </BrowserRouter>
-  </React.StrictMode>
+  </StrictMode>,
 );

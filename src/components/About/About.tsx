@@ -1,6 +1,6 @@
-import React from "react";
 import "./About.css";
 import { Link } from "react-router-dom";
+import aboutImage from "../../assets/images/about.png";
 function About() {
   return (
     <div className="about-container">
@@ -40,7 +40,7 @@ function About() {
               </a>
             </div>
             <img
-              src={require("../../assets/images/about.png")}
+              src={aboutImage}
               alt="Big shoe with a bunch of smaller shoes attached to it"
             />
           </div>

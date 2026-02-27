@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { type HTMLAttributes, useState } from "react";
 import "./SearchBar.css";
 import { useNavigate } from "react-router-dom";
 import { assets } from "../../assets";

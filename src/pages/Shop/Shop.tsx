@@ -1,42 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { ProductGridItem, SearchBar } from "../../components";
 import { formatCategory } from "../../utils";
 import "./Shop.css";
 
 import { useShop } from "../../context/ShopContext";
-import { Product } from "../../types/product";
 const Shop: React.FC = () => {
   const { category = "All", subcategory } = useParams<{
     category: string;
     subcategory: string;
   }>();
-  const { products, categories, subcategories, isLoading } = useShop();
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [title, setTitle] = useState("");
-  useEffect(() => {
-    // Build query parameters
-    const params: Record<string, string> = { category };
-    if (subcategory) params.subcategory = subcategory;
-    setTitle(
-      subcategory
-        ? `${formatCategory(category).toUpperCase()} → ${formatCategory(
-            subcategory
-          )}`
-        : `${formatCategory(category).toUpperCase()}`
-    );
-    setFilteredProducts(
-      products
-        .filter((item) => {
-          return item.category.toLowerCase() === category.toLowerCase();
-        })
-        .filter((item) =>
-          subcategory
-            ? item.subcategory.toLowerCase() === subcategory.toLowerCase()
-            : true
-        )
-    );
-  }, [categories, category, products, subcategories, subcategory]);
+  const { products, isLoading } = useShop();
+  const title = useMemo(() => {
+    return subcategory
+      ? `${formatCategory(category).toUpperCase()} → ${formatCategory(
+          subcategory,
+        )}`
+      : `${formatCategory(category).toUpperCase()}`;
+  }, [category, subcategory]);
+  const filteredProducts = useMemo(() => {
+    return products
+      .filter((item) => {
+        return item.category.toLowerCase() === category.toLowerCase();
+      })
+      .filter((item) =>
+        subcategory
+          ? item.subcategory.toLowerCase() === subcategory.toLowerCase()
+          : true,
+      );
+  }, [category, products, subcategory]);
+
   if (isLoading) {
     return <div className="content-centered-absolute">Loading...</div>;
   }

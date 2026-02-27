@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import {
   UKSizes,
   USSizes,
@@ -7,12 +7,18 @@ import {
   labelSizes,
 } from "../../data/sizes";
 import "./SizeChart.css";
+import type { Product } from "../../types/product";
 
-function SizeChart({ product, sizeType, unitType }) {
+interface SizeChartProps {
+  product: Product;
+  sizeType: string;
+  unitType: string;
+}
+function SizeChart({ product, sizeType, unitType }: SizeChartProps) {
   const updateTable = useCallback(() => {
-    var tableBody = document.getElementById("table-body");
+    const tableBody = document.getElementById("table-body");
     const tableData = [];
-
+    if (!tableBody) return;
     for (let i = 0; i < labelSizes.length; i++) {
       const row = [];
       //only add the data if the the us size is currently available for the current product
@@ -24,15 +30,16 @@ function SizeChart({ product, sizeType, unitType }) {
         else row.push(footLengthsCM[i]);
         tableData.push(row);
       }
+
       tableBody.innerHTML = "";
 
       // Build the new table
       tableData.forEach(function (row) {
-        var newRow = document.createElement("tr");
+        const newRow = document.createElement("tr");
         tableBody.appendChild(newRow);
         row.forEach(function (cell) {
-          var newCell = document.createElement("td");
-          newCell.textContent = cell;
+          const newCell = document.createElement("td");
+          if (newCell) newCell.textContent = cell as string;
           console.log({ cell });
           newRow.appendChild(newCell);
         });

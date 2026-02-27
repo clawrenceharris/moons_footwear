@@ -13,7 +13,7 @@ import { assets } from "../../../assets";
 import { useShop } from "../../../context";
 import { useProduct } from "../../../hooks";
 import NotFound from "../../NotFound/NotFound";
-import { ProductImage } from "../../../types/product";
+import type { ProductImage } from "../../../types/product";
 const EditProduct = () => {
   const { id } = useParams();
   const { product, isLoading } = useProduct(Number(id));
@@ -69,7 +69,7 @@ const EditProduct = () => {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -78,11 +78,11 @@ const EditProduct = () => {
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >,
-    index: number
+    index: number,
   ) => {
     const { name, value } = e.target;
     setNewImages((prev) =>
-      prev.map((img, i) => (i === index ? { ...img, [name]: value } : img))
+      prev.map((img, i) => (i === index ? { ...img, [name]: value } : img)),
     );
   };
 

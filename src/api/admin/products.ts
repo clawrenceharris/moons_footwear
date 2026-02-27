@@ -1,4 +1,4 @@
-import { Product } from "../../types/product";
+import type { Product } from "../../types/product";
 import api from "../axios";
 
 export const deleteProduct = async (id: number) => {
@@ -22,7 +22,8 @@ export const fetchProduct = async (id: number): Promise<Product> => {
 
 export const updateProduct = async (
   id: number,
-  body: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  body: any,
 ): Promise<Product> => {
   const response = await api.put(`/admin/product/${id}`, body);
   return response.data;
@@ -30,7 +31,7 @@ export const updateProduct = async (
 
 export const deleteImage = async (
   id: number,
-  imageId: number
+  imageId: number,
 ): Promise<Product> => {
   const response = await api.delete(`/admin/product/${id}/images/${imageId}`);
   return response.data;
@@ -38,7 +39,7 @@ export const deleteImage = async (
 
 export const addProductImage = async (
   id: number,
-  body: { imageUrl: string; altText?: string | null }
+  body: { imageUrl: string; altText?: string | null },
 ) => {
   const response = await api.post(`/admin/product/${id}/images`, body);
   return response.data;

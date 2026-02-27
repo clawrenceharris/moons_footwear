@@ -1,14 +1,18 @@
-import React from "react";
 import "./Deal.css";
 
-function Deal({ color, titleA, titleB }) {
+interface DealProps {
+  color: string;
+  title: string;
+  subtitle: string;
+}
+function Deal({ color, title, subtitle }: DealProps) {
   return (
     <div className="deal-container">
       <div style={{ backgroundColor: color }} className="deal-item">
-        <h5 style={{ fontWeight: "normal" }}>{titleA}</h5>
-        <h3>{titleB}</h3>
+        <h5 style={{ fontWeight: "normal" }}>{title}</h5>
+        <h3>{subtitle}</h3>
       </div>
-      <span href="#">Shop Now!</span>
+      <span>Shop Now!</span>
     </div>
   );
 }

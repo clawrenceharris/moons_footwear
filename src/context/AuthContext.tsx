@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, {
   createContext,
   useCallback,
@@ -7,8 +10,8 @@ import React, {
 } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { User } from "../types/user";
 import { loginUser, registerUser } from "../api/auth";
+import type { User } from "../types/user";
 interface AuthContextProps {
   children: React.ReactNode;
 }
@@ -66,7 +69,6 @@ function AuthProvider({ children }: AuthContextProps) {
     const storedToken = localStorage.getItem("jwt_token");
     if (storedToken) {
       setToken(storedToken);
-      console.log("first");
       decodeAndSetUser(storedToken);
       setLoading(false);
     }
@@ -85,9 +87,8 @@ function AuthProvider({ children }: AuthContextProps) {
       setToken(receivedToken);
       decodeAndSetUser(receivedToken);
       // Set Axios default header for all subsequent requests
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${receivedToken}`;
+      axios.defaults.headers.common["Authorization"] =
+        `Bearer ${receivedToken}`;
       return { success: true };
     } catch (error) {
       let errorMessage = "Login failed";

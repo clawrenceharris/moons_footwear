@@ -1,4 +1,4 @@
-import { Product } from "../types/product";
+import type { Product } from "../types/product";
 import api from "./axios";
 
 export const fetchAllProducts = async () => {
@@ -8,7 +8,7 @@ export const fetchAllProducts = async () => {
 
 export const fetchProductsByCategory = async (
   category: string,
-  subcategory?: string
+  subcategory?: string,
 ): Promise<Product[]> => {
   if (subcategory) {
     const response = await api.get(`/shop/category/${category}/${subcategory}`);

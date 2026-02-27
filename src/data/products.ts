@@ -10,7 +10,7 @@ import shoe9 from "../assets/images/moon-walker3.jpeg";
 
 export const products = [
   {
-    id: "0",
+    id: 1,
 
     srcset: [shoe2],
     name: "Jordan Retro 13",
@@ -43,7 +43,7 @@ export const products = [
     ],
   },
   {
-    id: "1",
+    id: 2,
 
     srcset: [shoe3],
     name: "PUMA MB. 03 Toxic",
@@ -78,7 +78,7 @@ export const products = [
   },
 
   {
-    id: "2",
+    id: 3,
 
     srcset: [shoe4],
     name: "Air Jordan 5 Retro SE",
@@ -113,7 +113,7 @@ export const products = [
   },
 
   {
-    id: "3",
+    id: 4,
 
     srcset: [shoe5],
     name: "Nike KD 16 NRG",
@@ -128,7 +128,7 @@ export const products = [
     sizes: ["7.5", "8.0", "8.5", "9.0", "9.5"],
   },
   {
-    id: "4",
+    id: 5,
     srcset: [shoe6],
     name: "Nike",
     salePrice: 0,
@@ -143,7 +143,7 @@ export const products = [
   },
 
   {
-    id: "5",
+    id: 6,
     srcset: [shoe9, shoe7, shoe8],
     name: "Moon Walker 3",
     salePrice: 75,

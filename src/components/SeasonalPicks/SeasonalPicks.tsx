@@ -1,4 +1,8 @@
 import "./SeasonalPicks.css";
+import seasonalPick1 from "../../assets/images/seasonal1.jpeg";
+import seasonalPick2 from "../../assets/images/seasonal2.jpeg";
+import seasonalPick3 from "../../assets/images/seasonal3.jpeg";
+import seasonalPick4 from "../../assets/images/seasonal4.png";
 
 const SeasonalPicks = () => {
   return (
@@ -9,26 +13,18 @@ const SeasonalPicks = () => {
           <button className="button-primary">Shop Now</button>
         </div>
 
-        <img
-          className="image-left"
-          src={require("../../assets/images/seasonal2.jpeg")}
-          alt="Seasonal Left"
-        />
+        <img className="image-left" src={seasonalPick2} alt="Seasonal Left" />
         <img
           className="image-middle-top"
           alt="Seasonal Middle Top"
-          src={require("../../assets/images/seasonal1.png")}
+          src={seasonalPick1}
         />
         <img
           className="image-middle-bottom"
-          src={require("../../assets/images/seasonal4.png")}
+          src={seasonalPick4}
           alt="Seasonal Middle Bottom"
         />
-        <img
-          className="image-right"
-          src={require("../../assets/images/seasonal3.jpeg")}
-          alt="Seasonal Right"
-        />
+        <img className="image-right" src={seasonalPick3} alt="Seasonal Right" />
       </div>
     </div>
   );

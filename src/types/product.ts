@@ -1,4 +1,4 @@
-import { User } from "./user";
+import type { User } from "./user";
 
 export interface Product {
   id: number;
@@ -11,9 +11,11 @@ export interface Product {
   stockQuantity: number;
   createdAt: string;
   discount: number | null;
+  srcset: string[];
   category: string;
   subcategory: string;
-  brand: ProductBrand;
+  sizes: string[];
+  brand?: ProductBrand;
   published: boolean;
   isArchived: boolean;
   images: ProductImage[];

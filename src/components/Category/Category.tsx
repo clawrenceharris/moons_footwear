@@ -1,4 +1,3 @@
-import React from "react";
 import maleHero from "../../assets/images/male-shoes.jpeg";
 import femaleHero from "../../assets/images/female-shoes.jpeg";
 import arrow from "../../assets/images/right-arrow.png";

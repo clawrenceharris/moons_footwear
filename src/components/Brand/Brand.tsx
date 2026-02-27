@@ -1,11 +1,12 @@
 import React from "react";
-import { ProductBrand as BrandType } from "../../../../types";
 import "./Brand.css";
+import type { ProductBrand } from "../../types/product";
+
 interface BrandProps {
-  brand: BrandType;
+  brand: ProductBrand;
 }
 const Brand: React.FC<BrandProps> = ({ brand }) => {
-  return <div>Brand</div>;
+  return <div>{brand.name}</div>;
 };
 
 export default Brand;
