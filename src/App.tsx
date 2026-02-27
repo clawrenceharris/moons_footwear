@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { CartToast, Layout } from "./components";
 import {
-  NewArrivals,
   Checkout,
   Search,
   SizeGuide,
@@ -10,6 +9,7 @@ import {
   Shop,
   Cart,
   Favorites,
+  NotFound,
 } from "./pages";
 import { useEffect } from "react";
 import { AdminPanel, EditProduct } from "./pages/admin";
@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index path="/" element={<Home />} />
-          <Route path="/new-arrivals" element={<NewArrivals />} />
+          {/* <Route path="/new-arrivals" element={<NewArrivals />} /> */}
           <Route path="/product/:id" element={<Product />} />
           <Route path="/size-guide" element={<SizeGuide />} />
           <Route element={<PrivateRoute />}>
@@ -53,6 +53,7 @@ function App() {
             path="/shop/category/:category/:subcategory?"
             element={<Shop />}
           />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>

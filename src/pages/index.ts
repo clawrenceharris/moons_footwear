@@ -9,3 +9,4 @@ export { default as Search } from "./Search";
 export { default as EditProduct } from "./admin/EditProduct";
 export { default as Cart } from "./Cart";
 export { default as Favorites } from "./Favorites";
+export { default as NotFound } from "./NotFound/NotFound";
