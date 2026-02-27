@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./SignUp.css";
 interface SignUpProps {
   onSubmit: (
     e: React.FormEvent<HTMLFormElement>,
-    data: { name: string; email: string; password: string }
+    data: { name: string; email: string; password: string },
   ) => void;
 }
 const SignUp = ({ onSubmit }: SignUpProps) => {
@@ -23,7 +22,7 @@ const SignUp = ({ onSubmit }: SignUpProps) => {
     onSubmit(e, inputs);
   };
   return (
-    <div>
+    <section>
       <h1>Sign Up</h1>
       <p className="description">
         Sign up to access your favorite items, view orders and more!
@@ -74,7 +73,7 @@ const SignUp = ({ onSubmit }: SignUpProps) => {
           Sign Up
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 
